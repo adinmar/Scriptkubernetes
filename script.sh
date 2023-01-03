@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set the interval at which to check the pod's state, in seconds
+interval=5
+
 # Get the list of pods
 pods=$(kubectl get pods --all-namespaces)
 
@@ -19,3 +22,7 @@ $pod
 EOF
   fi
 done <<< "$pods"
+
+sleep $interval
+
+done
